@@ -86,7 +86,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		else if (value.compareTo(subroot.key) > 0){ //if value is greater than subroot
 			subroot.rlink = delete(subroot.rlink, value);
 		}
-		else if (value.compareTo(subroot.key) < 0){
+		else if (value.compareTo(subroot.key) < 0){ // make a const for 0
 			subroot.llink = delete(subroot.llink, value);
 		}
 		else{
@@ -120,13 +120,58 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		}
 	}
 
+	public T findMax (){
+		try {
+			return(findSubtreeMax(this.root).key);
+		}
+		catch (Exception emptyTree) {
+			return null;
+		}
+	}
+
+	public T findMin (){
+		try {
+			return(findSubtreeMin(this.root).key);
+		}
+		catch (Exception emptyTree) {
+			return null;
+		}
+	}
+
+	private BSTNode<T> findSubtreeMin(BSTNode<T> subroot){
+		if(subroot == null){
+			return null;
+		}
+		if(subroot.llink == null){
+			return subroot;
+		}
+		else{
+			return findSubtreeMin(subroot.llink);
+		}
+	}
+
     /**
      * checks whether the target value is in the tree
      * @return true or false to indicate whether the target value is in the tree
      */
     public boolean search(T target) {
-        return false;  // CHANGE ME
+		return search(this.root, target) != null;
     }
+
+	private BSTNode<T> search(BSTNode<T> subroot, T target){
+		if(subroot == null){
+			return null;
+		}
+		else if (target.compareTo(subroot.key) > 0){
+			return search(subroot.rlink, target);
+		}
+		else if (target.compareTo(subroot.key) < 0){
+			return search(subroot.llink, target);
+		}
+		else{
+			return subroot;
+		}
+	}
 
 
 	/**

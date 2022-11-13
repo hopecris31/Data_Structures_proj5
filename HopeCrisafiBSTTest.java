@@ -329,4 +329,44 @@ public class HopeCrisafiBSTTest {
         assertFalse(bst.search("a"));
     }
 
+    @Test //Tests findMax; finds the highest value in the tree
+    public void testFindMax(){
+        bst.insert("D");
+        bst.insert("B");
+        bst.insert("F");
+        bst.insert("A");
+        bst.insert("C");
+        bst.insert("E");
+        bst.insert("G");
+
+
+        assertEquals("G", bst.findMax());
+    }
+
+    @Test //Tests findMax; tries to find the max value on an empty tree
+    public void testFindMaxEmpty(){
+
+        assertNull(bst.findMax());
+    }
+
+    @Test //Tests findMin; finds the lowest value in the tree
+    public void testFindMin(){
+        bst.insert("D");
+        bst.insert("B");
+        bst.insert("F");
+        bst.insert("A");
+        bst.insert("C");
+        bst.insert("E");
+        bst.insert("G");
+
+
+        assertEquals("A", bst.findMin());
+    }
+
+    @Test //Tests findMin; tries to find the smallest value on an empty tree
+    public void testFindMinEmpty(){
+
+        assertNull(bst.findMin());
+    }
+
 }
