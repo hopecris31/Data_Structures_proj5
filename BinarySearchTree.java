@@ -100,13 +100,9 @@ public class BinarySearchTree<T extends Comparable<T>> {
 				return subroot.llink;
 			}
 			else{
-				BSTNode<T> replacement = findSubtreeMax(subroot);
-				//T temp = subroot.key; //could comment out
-
-				subroot.key = replacement.key;
-				//replacement.key = temp; //could comment out
-
-				return replacement;
+				T greatestValue = findSubtreeMax(subroot).key;
+				delete(greatestValue);
+				subroot.key = greatestValue;
 			}
 		}
 		return subroot;
