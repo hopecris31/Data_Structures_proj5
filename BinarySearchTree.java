@@ -86,7 +86,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		else if (value.compareTo(subroot.key) > 0){ //if value is greater than subroot
 			subroot.rlink = delete(subroot.rlink, value);
 		}
-		else if (value.compareTo(subroot.key) < 0){ // make a const for 0
+		else if (value.compareTo(subroot.key) < 0){
 			subroot.llink = delete(subroot.llink, value);
 		}
 		else{
@@ -105,7 +105,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 				subroot.key = greatestValue;
 			}
 		}
-		return subroot;
+		return subroot; //why do we want to return subroot at the end
 	}
 
 	private BSTNode<T> findSubtreeMax(BSTNode<T> subroot){

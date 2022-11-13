@@ -225,7 +225,7 @@ public class HopeCrisafiBSTTest {
 
         bst.delete("B");
 
-        assertEquals("((  A  (  C  ))  D  ((  E  )  F  (  G  )))", bst.toString());
+        assertEquals("(((  A  )  C  )  D  ((  E  )  F  (  G  )))", bst.toString());
     }
 
     @Test //Tests delete, deletes the root node. the Tree should re-balance
