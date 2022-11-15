@@ -1,6 +1,6 @@
 package proj5;
 
-public class Pagelist<T> {
+public class Pagelist<T extends Comparable<T>> implements Comparable<Pagelist> {
 
     private Object[] holder;
     private int size;
@@ -68,9 +68,16 @@ public class Pagelist<T> {
         return false;
     }
 
+    //add method that returns word instance variable
+
+
 
     public int size(){
         return this.size;
+    }
+
+    public void ensureOrder(){
+        return;
     }
 
 
@@ -85,7 +92,20 @@ public class Pagelist<T> {
         return toReturn + "}";
     }
 
-
+    @Override
+    public int compareTo(Pagelist other) {
+        int thisValue = this.size();
+        int otherValue = other.size();
+        if(thisValue > otherValue){
+            return 1;
+        }
+        else if (thisValue == otherValue){
+            return 0;
+        }
+        else{
+            return -1;
+        }
+    }
 
     /** ------------------------------
      *      PRIVATE HELPER METHODS
@@ -117,7 +137,6 @@ public class Pagelist<T> {
             }
         }
     }
-
 
 
 }

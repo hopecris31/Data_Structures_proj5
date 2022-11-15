@@ -12,8 +12,8 @@ import static org.junit.Assert.*;
 
 public class PagelistTest {
 
-    //@Rule
-    //public Timeout timeout = Timeout.millis(100);
+    @Rule
+    public Timeout timeout = Timeout.millis(100);
 
     public Pagelist<String> pl;
 
