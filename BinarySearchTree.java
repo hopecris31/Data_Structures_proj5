@@ -80,13 +80,15 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		 *         move the data from replacement node to victim node
 		 *         delete the replacement
 		 */
+
+		//BSTNode<T> subroot1 = search(subroot, value); //locate the node
 		if(subroot == null){
 			return null;
 		}
 		else if (value.compareTo(subroot.key) > 0){ //if value is greater than subroot
 			subroot.rlink = delete(subroot.rlink, value);
 		}
-		else if (value.compareTo(subroot.key) < 0){ // make a const for 0
+		else if (value.compareTo(subroot.key) < 0){ // make a const for 0/make this more readable?
 			subroot.llink = delete(subroot.llink, value);
 		}
 		else{
@@ -112,7 +114,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		if(subroot == null){
 			return null;
 		}
-		if(subroot.rlink == null){
+		else if(subroot.rlink == null){
 			return subroot;
 		}
 		else{
@@ -122,7 +124,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
 	public T findMax (){
 		try {
-			return(findSubtreeMax(this.root).key);
+			return findSubtreeMax(this.root).key;
 		}
 		catch (Exception emptyTree) {
 			return null;
@@ -131,7 +133,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
 	public T findMin (){
 		try {
-			return(findSubtreeMin(this.root).key);
+			return findSubtreeMin(this.root).key;
 		}
 		catch (Exception emptyTree) {
 			return null;
@@ -142,7 +144,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		if(subroot == null){
 			return null;
 		}
-		if(subroot.llink == null){
+		else if(subroot.llink == null){
 			return subroot;
 		}
 		else{
@@ -173,6 +175,26 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		}
 	}
 
+//	private T[] makeArray(BSTNode<T> root){
+//		T[] array = new T[this.size()];
+//		return makeArray(root, array);
+//	}
+//
+//	private T mkaeArray(BSTNode<T> subroot, T[] array){
+//
+//	}
+
+	public int size(){
+		return size(this.root);
+	}
+	private int size(BSTNode<T> subroot){
+		if(subroot == null){
+			return 0;
+		}
+		else{
+			return 1 + size(subroot.llink) + size(subroot.rlink);
+		}
+	}
 
 	/**
 	 * returns tree as printable string
@@ -199,5 +221,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		}
 		return ret;
 	}
+
 
 }

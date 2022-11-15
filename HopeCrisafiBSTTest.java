@@ -213,7 +213,7 @@ public class HopeCrisafiBSTTest {
         assertEquals("((  B  (  C  ))  D  ((  E  )  F  (  G  )))", bst.toString());
     }
 
-    @Test //Tests delete, deletes the root node of a subtree. the Tree should re-balance
+    @Test //Tests delete, deletes the root node of a subtree. Greatest val below subroot becomes new subroot
     public void testDeleteSubRoot(){
         bst.insert("D");
         bst.insert("B");
@@ -228,7 +228,7 @@ public class HopeCrisafiBSTTest {
         assertEquals("(((  A  )  C  )  D  ((  E  )  F  (  G  )))", bst.toString());
     }
 
-    @Test //Tests delete, deletes the root node. the Tree should re-balance
+    @Test //Tests delete, deletes the root node. Greatest val becomes root
     public void testDeleteRoot(){
         bst.insert("D");
         bst.insert("B");
@@ -368,5 +368,32 @@ public class HopeCrisafiBSTTest {
 
         assertNull(bst.findMin());
     }
+
+    @Test //Tests search; searches for the greatest value
+    public void testPrintTree(){
+        bst.insert("D");
+        bst.insert("B");
+        bst.insert("F");
+        bst.insert("A");
+        bst.insert("C");
+        bst.insert("E");
+        bst.insert("G");
+
+        //bst.printPreorder();
+    }
+
+    @Test //Tests search; searches for the greatest value
+    public void testSize(){
+        bst.insert("D");
+        bst.insert("B");
+        bst.insert("F");
+        bst.insert("A");
+        bst.insert("C");
+        bst.insert("E");
+        bst.insert("G");
+
+        assertEquals(7, bst.size());
+    }
+
 
 }
