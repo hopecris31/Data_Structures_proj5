@@ -25,6 +25,26 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		root = insert(root,newValue);
 	}
 
+	public T getData(T toFind){
+		return getData(root, toFind);
+	}
+
+	//returns a pointer to the node of that value
+	private T getData(BSTNode<T> subroot, T toFind){
+		if(!this.contains(toFind)){
+			return null;
+		}
+		else if (subroot.key.compareTo(toFind) > 0){
+			return getData(subroot.llink, toFind);
+		}
+		else if(subroot.key.compareTo(toFind) < 0){
+			return getData(subroot.rlink, toFind);
+		}
+		else{
+			return subroot.key;
+		}
+	}
+
 	/**
 	 * inserts value into tree rooted at subroot
 	 * 
@@ -156,35 +176,53 @@ public class BinarySearchTree<T extends Comparable<T>> {
      * checks whether the target value is in the tree
      * @return true or false to indicate whether the target value is in the tree
      */
-    public boolean search(T target) {
-		return search(this.root, target) != null;
+    public boolean contains(T target) {
+		return contains(this.root, target) != null;
     }
 
-	public void
 
-	private BSTNode<T> search(BSTNode<T> subroot, T target){
+	private BSTNode<T>  search(BSTNode<T> subroot, T toFind){
+		if(subroot == null){
+			return null;
+		}
+		return null;
+	}
+
+
+	private BSTNode<T> contains(BSTNode<T> subroot, T target){
 		if(subroot == null){
 			return null;
 		}
 		else if (target.compareTo(subroot.key) > 0){
-			return search(subroot.rlink, target);
+			return contains(subroot.rlink, target);
 		}
 		else if (target.compareTo(subroot.key) < 0){
-			return search(subroot.llink, target);
+			return contains(subroot.llink, target);
 		}
 		else{
 			return subroot;
 		}
 	}
 
-//	private T[] makeArray(BSTNode<T> root){
-//		T[] array = new T[this.size()];
-//		return makeArray(root, array);
-//	}
-//
-//	private T mkaeArray(BSTNode<T> subroot, T[] array){
-//
-//	}
+	public LinkedList<T> makeArray(){
+		return makeArray(this.root, new LinkedList<T>());
+	}
+
+	private LinkedList<T> makeArray(BSTNode<T> subroot, LinkedList<T> ll){
+		if(subroot == null){
+			return ll;
+		}
+		else{
+			if(subroot.llink != null){
+				makeArray(subroot.llink, ll);
+			}
+			if(subroot.rlink != null){
+				makeArray(subroot.rlink, ll);
+			}
+			ll.insertAtEnd(subroot.key);
+		}
+		return ll;
+	}
 
 	public int size(){
 		return size(this.root);

@@ -1,8 +1,8 @@
 package proj5;
 
-public class Pagelist<T extends Comparable<T>> implements Comparable<Pagelist> {
+public class Pagelist implements Comparable<Pagelist> {
 
-    private Object[] holder;
+    private int[] holder;
     private int size;
     private String word;
     private final int DEFAULT_CAPACITY = 4;
@@ -10,42 +10,34 @@ public class Pagelist<T extends Comparable<T>> implements Comparable<Pagelist> {
     private final int LAST_INDEX = size()-1;
 
     public Pagelist(){
-        this.holder = new Object[DEFAULT_CAPACITY];
+        this.holder = new int[DEFAULT_CAPACITY];
         this.size = EMPTY;
-        this.word = null;
+        this.word = "";
     }
 
     public Pagelist(String word){
-        this.holder = new Object[DEFAULT_CAPACITY];
+        this.holder = new int[DEFAULT_CAPACITY];
         this.size = EMPTY;
         this.word = word;
     }
 
     public Pagelist(int capacity){
-        this.holder = new Object[capacity];
+        this.holder = new int[capacity];
         this.size = EMPTY;
     }
 
-    public void add(T toAdd){
-        try{
-            if(!this.contains(toAdd)){
-                this.holder[size()] = toAdd;
-                this.size++;
-            }
-        }
-        catch (Exception capacityReached){
-            System.out.println("Item " + toAdd + " was not added. Pagelist capacity reached.");
+
+    public void add(int toAdd){
+//        if(this.capacityReached()){
+//            addToDict(this.word);
+//        }
+        if(!this.contains(toAdd) && !this.capacityReached()){
+            this.holder[size()] = toAdd;
+            this.size++;
         }
     }
 
-    public void add1(T toAdd){
-            if(!this.contains(toAdd) && !this.capacityReached()){
-                this.holder[size()] = toAdd;
-                this.size++;
-            }
-    }
-
-    public void remove(T toRemove){
+    public void remove(int toRemove){
         for(int i=0; i<this.size(); i++){
             if(this.holder[i] == toRemove){
                 this.removeAndShift(i);
@@ -54,12 +46,15 @@ public class Pagelist<T extends Comparable<T>> implements Comparable<Pagelist> {
         }
     }
 
+    public boolean capacityReached(){
+        return this.size() == this.holder.length;
+    }
 
     public int getCapacity(){
         return this.holder.length;
     }
 
-    public boolean contains(T toFind){
+    public boolean contains(int toFind){
             for(int i=0; i<this.size(); i++){
                 if(this.holder[i] == toFind){
                     return true;
@@ -80,6 +75,14 @@ public class Pagelist<T extends Comparable<T>> implements Comparable<Pagelist> {
         return;
     }
 
+    public String word(){
+        return this.word;
+    }
+
+    public boolean equalsWord(String word){
+        return this.word.equals(word);
+    }
+
 
     public String toString(){
         String toReturn = word + " {";
@@ -94,17 +97,7 @@ public class Pagelist<T extends Comparable<T>> implements Comparable<Pagelist> {
 
     @Override
     public int compareTo(Pagelist other) {
-        int thisValue = this.size();
-        int otherValue = other.size();
-        if(thisValue > otherValue){
-            return 1;
-        }
-        else if (thisValue == otherValue){
-            return 0;
-        }
-        else{
-            return -1;
-        }
+        return this.word().compareTo(other.word());
     }
 
     /** ------------------------------
@@ -117,10 +110,6 @@ public class Pagelist<T extends Comparable<T>> implements Comparable<Pagelist> {
     }
 
 
-    private boolean capacityReached() {
-        return this.size() == this.getCapacity();
-    }
-
 
     private Object getLastItem() {
         return this.holder[LAST_INDEX];
@@ -130,7 +119,7 @@ public class Pagelist<T extends Comparable<T>> implements Comparable<Pagelist> {
     private void removeAndShift(int index){
         for(int i=index; i<this.size(); i++){
             if(i == this.size()-1){
-                this.holder[i] = null;
+                this.holder[i] = 0;
             }
             else{
                 this.holder[i] = this.holder[i+1];

@@ -11,7 +11,9 @@ public class Client
 {
     public static void main(String[] args)
     {
-    	makeIndex("proj5/input.txt"); //replace with correct path
+        String file = "proj5/input.txt";
+    	makeIndex(file); //replace with correct path
+        //makeDictionary(file);
     }
     
     /**

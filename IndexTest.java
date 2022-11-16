@@ -18,7 +18,7 @@ public class IndexTest {
 
     @Before
     public void setup() throws Exception {
-        index = new Index<>("Test");
+        index = new Index();
     }
 
     @After
@@ -27,37 +27,76 @@ public class IndexTest {
     }
 
     @Test
-    public void testInsert(){
-        index.insert("hello");
-        index.insert("world");
+    public void makeEntry(){
+        index.makeEntry("hello");
 
-        assertEquals("( hello {} ) world {} ))", index.toString());
+        assertEquals("(  hello {}  )", index.toString());
     }
 
     @Test
     public void testInsertDuplicate(){
-        index.insert("hello");
-        index.insert("world");
+        index.makeEntry("hello");
+        index.makeEntry("world");
 
-        index.insert("hello");
+        index.makeEntry("hello");
 
-        assertEquals("( hello {} ) world {} ))", index.toString());
+        assertEquals("(  hello {}  (  world {}  ))", index.toString());
     }
 
     @Test
     public void testInsertFullPagelist(){
-        index.insert("hello");
-        index.insert("world");
-        index.insert("Hello");
-        index.insert("World");
+        index.makeEntry("hello");
+        index.makeEntry("world");
+        index.makeEntry("Hello");
+        index.makeEntry("World");
 
-        index.insert("hello");
+        index.makeEntry("hello");
+        System.out.println(index);
 
         assertEquals(4, index.size());
     }
 
     @Test
-    public void testAddToDict(){
+    public void testRemove(){
+        index.makeEntry("hello");
+        index.makeEntry("world");
+        index.makeEntry("Hello");
+        index.makeEntry("World");
+
+        index.delete("hello");
+        System.out.println(index);
+
+        assertEquals(3, index.size());
+    }
+
+    @Test
+    public void testRemoveEmpty(){
+        index.makeEntry("hello");
+        index.makeEntry("world");
+        index.makeEntry("Hello");
+        index.makeEntry("World");
+
+        index.delete("hello");
+        System.out.println(index);
+
+        assertEquals(3, index.size());
+    }
+
+    @Test
+    public void testaddPageNum(){
+        index.makeEntry("hello");
+        index.makeEntry("world");
+
+        index.addPageNum(3, "hello");
+        index.addPageNum(3, "hello");
+        index.addPageNum(4, "hello");
+        index.addPageNum(5, "hello");
+        index.addPageNum(6, "hello");
+        index.addPageNum(7, "hello");
+        index.addPageNum(7, "world");
+
+
+        System.out.println(index);
 
     }
 

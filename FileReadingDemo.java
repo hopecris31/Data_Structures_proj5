@@ -31,7 +31,7 @@ public class FileReadingDemo {
     public void run () {
         while (myReader.hasNext()) {
             String nextExpression = myReader.next();
-            System.out.println(nextExpression);
+            //if(nextExpression)
         }
     }
 

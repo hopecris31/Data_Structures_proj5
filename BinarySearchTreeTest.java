@@ -8,7 +8,7 @@ import org.junit.rules.Timeout;
 
 import static org.junit.Assert.*;
 
-public class HopeCrisafiBSTTest {
+public class BinarySearchTreeTest {
 
     @Rule
     public Timeout timeout = Timeout.millis(100);
@@ -268,7 +268,7 @@ public class HopeCrisafiBSTTest {
         bst.insert("E");
         bst.insert("G");
 
-        assertTrue(bst.search("C"));
+        assertTrue(bst.contains("C"));
     }
 
     @Test //Tests search; searches for a value that is not in the tree
@@ -281,13 +281,13 @@ public class HopeCrisafiBSTTest {
         bst.insert("E");
         bst.insert("G");
 
-        assertFalse(bst.search("X"));
+        assertFalse(bst.contains("X"));
     }
 
     @Test //Tests search; tries to search an empty tree
     public void testSearchEmptyTree(){
 
-        assertFalse(bst.search("X"));
+        assertFalse(bst.contains("X"));
     }
 
     @Test //Tests search; searches for the greatest value
@@ -300,7 +300,7 @@ public class HopeCrisafiBSTTest {
         bst.insert("E");
         bst.insert("G");
 
-        assertTrue(bst.search("F"));
+        assertTrue(bst.contains("F"));
     }
 
     @Test //Tests search; searches for the lowest value
@@ -313,7 +313,7 @@ public class HopeCrisafiBSTTest {
         bst.insert("E");
         bst.insert("G");
 
-        assertTrue(bst.search("A"));
+        assertTrue(bst.contains("A"));
     }
 
     @Test //Tests search; searches for the lowercase of an uppercase letter (should return false, case-sensitive)
@@ -326,7 +326,7 @@ public class HopeCrisafiBSTTest {
         bst.insert("E");
         bst.insert("G");
 
-        assertFalse(bst.search("a"));
+        assertFalse(bst.contains("a"));
     }
 
     @Test //Tests findMax; finds the highest value in the tree
@@ -395,5 +395,17 @@ public class HopeCrisafiBSTTest {
         assertEquals(7, bst.size());
     }
 
+    @Test //Tests search; searches for a value that is in the tree
+    public void testMakeLL(){
+        bst.insert("D");
+        bst.insert("B");
+        bst.insert("F");
+        bst.insert("A");
+        bst.insert("C");
+        bst.insert("E");
+        bst.insert("G");
+
+        System.out.println(bst.makeArray());
+    }
 
 }

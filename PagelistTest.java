@@ -15,11 +15,11 @@ public class PagelistTest {
     @Rule
     public Timeout timeout = Timeout.millis(100);
 
-    public Pagelist<String> pl;
+    public Pagelist pl;
 
     @Before
     public void setup() throws Exception {
-        pl = new Pagelist<>("Test");
+        pl = new Pagelist("Test");
     }
 
     @After
@@ -29,77 +29,78 @@ public class PagelistTest {
 
     @Test //Tests add;
     public void testAdd(){
-        pl.add("A");
-        pl.add("B");
-        pl.add("C");
+        pl.add(1);
+        pl.add(2);
+        pl.add(3);
 
         assertEquals(3, pl.size());
-        assertEquals("Test {A, B, C}", pl.toString());
+        assertEquals("Test {1, 2, 3}", pl.toString());
     }
 
     @Test //Tests add; adds to an empty pagelist
     public void testAddEmpty(){
-        pl.add("A");
+        pl.add(1);
 
 
         assertEquals(1, pl.size());
-        assertEquals("Test {A}", pl.toString());
+        assertEquals("Test {1}", pl.toString());
     }
 
     @Test //Tests add; tries to add a duplicate element. should not add
     public void testAddDuplicate(){
-        pl.add("A");
-        pl.add("B");
+        pl.add(1);
+        pl.add(2);
 
-        pl.add("A");
+        pl.add(1);
 
         assertEquals(2, pl.size());
-        assertEquals("Test {A, B}", pl.toString());
+        assertEquals("Test {1, 2}", pl.toString());
     }
 
     @Test //Tests add; tries to add to a full pagelist. should not add
     public void testAddFull(){
-        pl.add("A");
-        pl.add("B");
-        pl.add("C");
-        pl.add("D");
+        pl.add(1);
+        pl.add(2);
+        pl.add(3);
+        pl.add(4);
 
-        pl.add("X");
+        pl.add(9);
 
         assertEquals(4, pl.size());
-        assertEquals("Test {A, B, C, D}", pl.toString());
+        assertEquals("Test {1, 2, 3, 4}", pl.toString());
     }
 
     @Test //Tests remove;
     public void testRemove(){
-        pl.add("A");
-        pl.add("B");
-        pl.add("C");
-        pl.add("D");
+        pl.add(1);
+        pl.add(2);
+        pl.add(3);
+        pl.add(4);
 
-        pl.remove("A");
+        pl.remove(1);
+        System.out.println(pl.toString());
 
         assertEquals(3, pl.size());
-        assertEquals("Test {B, C, D}", pl.toString());
+        assertEquals("Test {2, 3, 4}", pl.toString());
     }
 
     @Test //Tests remove; tries to remove an element not in the pagelist
     public void testRemoveNotInPagelist(){
-        pl.add("A");
-        pl.add("B");
-        pl.add("C");
-        pl.add("D");
+        pl.add(1);
+        pl.add(2);
+        pl.add(3);
+        pl.add(4);
 
-        pl.remove("X");
+        pl.remove(9);
 
         assertEquals(4, pl.size());
-        assertEquals("Test {A, B, C, D}", pl.toString());
+        assertEquals("Test {1, 2, 3, 4}", pl.toString());
     }
 
     @Test //Tests remove; tries to remove on an empty pagelist
     public void testRemoveEmpty(){
 
-        pl.remove("A");
+        pl.remove(1);
 
         assertEquals(0, pl.size());
         assertEquals("Test {}", pl.toString());
@@ -112,37 +113,37 @@ public class PagelistTest {
 
     @Test //Tests size; tested on pagelist with size 3
     public void testSize(){
-        pl.add("A");
-        pl.add("B");
-        pl.add("C");
+        pl.add(1);
+        pl.add(2);
+        pl.add(3);
 
         assertEquals(3, pl.size());
     }
 
     @Test //Tests contains; pagelist contains element
     public void testContainsTrue(){
-        pl.add("A");
-        pl.add("B");
-        pl.add("C");
-        pl.add("D");
+        pl.add(1);
+        pl.add(2);
+        pl.add(3);
+        pl.add(4);
 
-        assertTrue(pl.contains("B"));
+        assertTrue(pl.contains(2));
     }
 
     @Test //Tests contains; pagelist does not contain element
     public void testContainsFalse(){
-        pl.add("A");
-        pl.add("B");
-        pl.add("C");
-        pl.add("D");
+        pl.add(1);
+        pl.add(2);
+        pl.add(3);
+        pl.add(4);
 
-        assertFalse(pl.contains("X"));
+        assertFalse(pl.contains(9));
     }
 
     @Test //Tests contains; pagelist is empty
     public void testContainsEmpty(){
 
-        assertFalse(pl.contains("X"));
+        assertFalse(pl.contains(9));
     }
 
 }

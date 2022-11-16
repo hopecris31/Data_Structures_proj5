@@ -1,54 +1,56 @@
 package proj5;
 
-public class Index<T extends Comparable<T>>{
+public class Index{
 
-    private BinarySearchTree<Pagelist<Integer>> holder;
-    private String word;
+    private BinarySearchTree<Pagelist> holder;
     private int size;
     private final int EMPTY = 0;
 
     public Index(){
-        this.word = null;
         this.holder = new BinarySearchTree<>();
         this.size = EMPTY;
     }
 
-    public Index(String word){
-        this.word = word;
-        this.holder = new BinarySearchTree<>();
-        this.size = EMPTY;
+
+    public boolean contains(String word){
+        Pagelist toFind = new Pagelist(word);
+        return this.holder.contains(toFind);
     }
 
-    //clean up
-    public void insert(T toAdd){
-        if(!this.holder.search(toAdd.word()) && toAdd.length() >2){ //correct instance variables/methods, cant use length() cuz not applicable to generic
-            this.holder.insert(toAdd);
-            //helper method that accesses the node instance variable in BST
+
+    public void addPageNum(int pageNum, String word){
+        Pagelist toFind = new Pagelist(word);
+        holder.getData(toFind).add(pageNum);
+    }
+
+    public void addToDict(Dictionary dictionary, String toAdd){
+        dictionary.insert(toAdd);
+    }
+
+    //clean up.  this is the add method
+    public void makeEntry(String toAdd){
+        Pagelist newEntry = new Pagelist(toAdd);
+        if( toAdd.length() > 2 && !this.holder.contains(newEntry)){
+            this.holder.insert(new Pagelist(toAdd));
         }
     }
 
-    public void remove(T toRemove){
-        return;
+    public void delete(String toRemove){
+        Pagelist toFind = new Pagelist(toRemove);
+        this.holder.delete(toFind);
+        System.out.println("Deleting '" + toFind + "' from index.");
     }
 
-    public void addToDict(Dictionary dictionary){
-        return;
-    }
-
-    public boolean contains (T toContain){
-        return false;
-    }
 
     public int size(){
         return this.holder.size();
     }
 
-    public boolean equals(){
-        //if word is equal other??
-    }
+
 
     public String toString(){
-        return "";
+        return this.holder.toString();
+        //get alphabetical order and print
     }
 
 
