@@ -102,7 +102,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		 */
 
 		//BSTNode<T> subroot1 = search(subroot, value); //locate the node
-		if(subroot == null){
+		if(subroot == null || value == null){
 			return null;
 		}
 		else if (value.compareTo(subroot.key) > 0){ //if value is greater than subroot

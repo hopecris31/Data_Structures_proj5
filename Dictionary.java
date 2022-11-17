@@ -34,6 +34,8 @@ public class Dictionary {
     }
 
     public String toString(){
+        System.out.println("DICTIONARY");
+        System.out.println("----------");
         return this.holder.makeLL().toString();
     }
 

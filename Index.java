@@ -3,12 +3,10 @@ package proj5;
 public class Index{
 
     private BinarySearchTree<Pagelist> holder;
-    private int size;
     private final int EMPTY = 0;
 
     public Index(){
         this.holder = new BinarySearchTree<>();
-        this.size = EMPTY;
     }
 
 
@@ -42,7 +40,6 @@ public class Index{
         Pagelist newEntry = new Pagelist(toAdd);
         if(toAdd.length() > 2 && !this.holder.contains(newEntry)){
             this.holder.insert(new Pagelist(toAdd));
-            this.size++;
         }
     }
 
@@ -57,8 +54,8 @@ public class Index{
 
     public void delete(String toRemove){
         Pagelist toFind = new Pagelist(toRemove);
-        this.holder.delete(toFind);
-        this.size--;
+        Pagelist data = this.holder.getData(toFind);
+        this.holder.delete(data);
         System.out.println("Deleting '" + toFind + "' from index.");
     }
 
@@ -70,8 +67,9 @@ public class Index{
 
 
     public String toString(){
+        System.out.println("INDEX");
+        System.out.println("-----");
         return this.holder.makeLL().toString();
-        //get alphabetical order and print
     }
 
 
