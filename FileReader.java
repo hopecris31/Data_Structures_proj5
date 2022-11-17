@@ -34,13 +34,15 @@ public class FileReader {
                 pageNum++;
             }
             if(nextExpression.length() > 2 && !dictionary.contains(nextExpression)){
-                if(index.wordContainsPage(pageNum, nextExpression)){
-                    if(index.pagelistIsFull(nextExpression)){
-                        index.addPageNum(pageNum, nextExpression);
-                    }
-                    else{
-                        index.delete(nextExpression);
-                        dictionary.insert(nextExpression);
+                if(!index.containsWord(nextExpression)){
+                    if(!index.wordContainsPage(pageNum, nextExpression)){
+                        if(index.pagelistIsFull(nextExpression)){
+                            index.addPageNum(pageNum, nextExpression);
+                        }
+                        else{
+                            index.delete(nextExpression);
+                            dictionary.insert(nextExpression);
+                        }
                     }
                 }
             }
