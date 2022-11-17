@@ -19,7 +19,6 @@ public class Pagelist implements Comparable<Pagelist> {
     private String word;
     private final int DEFAULT_CAPACITY = 4;
     private final int EMPTY = 0;
-    private final int LAST_INDEX = size()-1;
 
     /**
      * Default Constructor

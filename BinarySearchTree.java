@@ -308,11 +308,12 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	 * @param subroot root of tree to be traversed
 	 */
 	private void orderedPrint(BSTNode<T> subroot){
-		if(subroot != null){
-			orderedPrint(subroot.llink);
-			System.out.println(subroot.key +  "");
-			orderedPrint(subroot.rlink);
+		if(subroot == null) {
+			return;
 		}
-	}
+		orderedPrint(subroot.llink);
+		System.out.println(subroot.key +  "");
+		orderedPrint(subroot.rlink);
+		}
 
 }

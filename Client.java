@@ -11,7 +11,7 @@ public class Client
 {
     public static void main(String[] args)
     {
-        String file = "input.txt";
+        String file = "entirebeemoviescript.txt";
     	makeIndex(file);
     }
     

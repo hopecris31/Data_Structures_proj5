@@ -54,10 +54,8 @@ public class Index{
     //clean up.  this is the add method
     public void makeEntry(String toAdd, int pageNum){
         Pagelist newEntry = new Pagelist(toAdd);
-        if(toAdd.length() > 2 && !this.holder.search(newEntry)){
-            this.holder.insert(newEntry);
-            newEntry.add(pageNum);
-        }
+        this.holder.insert(newEntry);
+        newEntry.add(pageNum);
     }
 
     public boolean pagelistIsFull(String word){
@@ -72,8 +70,8 @@ public class Index{
     public void delete(String toRemove){
         Pagelist toFind = new Pagelist(toRemove);
         Pagelist data = this.holder.getData(toFind);
+        System.out.println("Deleting '" + data + "' from index.");
         this.holder.delete(data);
-        System.out.println("Deleting '" + toFind + "' from index.");
     }
 
 
