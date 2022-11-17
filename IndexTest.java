@@ -100,4 +100,16 @@ public class IndexTest {
 
     }
 
+    @Test
+    public void testWordContainsPage(){
+        index.makeEntry("hello");
+        index.makeEntry("world");
+
+        index.addPageNum(3, "hello");
+        index.addPageNum(3, "hello");
+        index.addPageNum(4, "hello");
+
+        assertTrue(index.wordContainsPage(3, "hello"));
+    }
+
 }

@@ -34,8 +34,45 @@ public class DictionaryTest {
 
         System.out.println(dict);
 
-        assertEquals("(dog, world, hello)", dict.toString());
+        assertEquals("1) dog\n" +
+                "2) world\n" +
+                "3) hello", dict.toString());
     }
 
+    @Test
+    public void testRemove(){
+        dict.insert("hello");
+        dict.insert("world");
+        dict.insert("dog");
+
+        dict.remove("dog");
+
+        System.out.println(dict);
+
+        assertEquals("1) world\n" +
+                "2) hello", dict.toString());
+    }
+
+    @Test
+    public void testContains(){
+        dict.insert("hello");
+        dict.insert("world");
+        dict.insert("dog");
+
+        System.out.println(dict);
+
+        assertTrue(dict.contains("dog"));
+    }
+
+    @Test
+    public void testContainsFalse(){
+        dict.insert("hello");
+        dict.insert("world");
+        dict.insert("dog");
+
+        System.out.println(dict);
+
+        assertFalse(dict.contains("cat"));
+    }
 
 }

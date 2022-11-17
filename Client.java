@@ -11,8 +11,8 @@ public class Client
 {
     public static void main(String[] args)
     {
-        String file = "proj5/input.txt";
-    	makeIndex(file); //replace with correct path
+        String file = "input.txt";
+    	makeIndex(file);
         //makeDictionary(file);
     }
     
@@ -22,8 +22,7 @@ public class Client
      * @param fileName path to text file that you want to index
      */
     public static void makeIndex(String fileName) {
-        // replace the following code
-    	FileReadingDemo demo = new FileReadingDemo(fileName);
-        demo.run();
+    	FileReader fileReader = new FileReader(fileName);
+        fileReader.run();
     }
 }
