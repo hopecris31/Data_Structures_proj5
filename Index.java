@@ -1,22 +1,38 @@
 package proj5;
 
+/**
+ * Represents an Index (of words)
+ *
+ * An Index contains a word and its page number occurrences.  Words that
+ * are considered insignificant are two or less in length, and are not granted
+ * an entry in the index.
+ *
+ * INVARIANTS:
+ * -put invariants here💀💀
+ *
+ * @author Hope Crisafi
+ * @version 151 Fall 2022
+ */
+
 public class Index{
 
     private BinarySearchTree<Pagelist> holder;
-    private final int EMPTY = 0;
 
+    /**
+     * default constructor
+     */
     public Index(){
         this.holder = new BinarySearchTree<>();
     }
 
-
+    /**
+     * checks to see if a word is already in the index
+     * @param word a word to see if contained
+     * @return true if word is in the index, false if not
+     */
     public boolean containsWord(String word){
         Pagelist toFind = new Pagelist(word);
-        Pagelist data = this.holder.getData(toFind);
-        if(data == null){
-            return false;
-        }
-        return this.holder.contains(toFind);
+        return this.holder.search(toFind);
     }
 
     public boolean wordContainsPage(int pageNum, String word){
@@ -36,10 +52,11 @@ public class Index{
 
 
     //clean up.  this is the add method
-    public void makeEntry(String toAdd){
+    public void makeEntry(String toAdd, int pageNum){
         Pagelist newEntry = new Pagelist(toAdd);
-        if(toAdd.length() > 2 && !this.holder.contains(newEntry)){
-            this.holder.insert(new Pagelist(toAdd));
+        if(toAdd.length() > 2 && !this.holder.search(newEntry)){
+            this.holder.insert(newEntry);
+            newEntry.add(pageNum);
         }
     }
 

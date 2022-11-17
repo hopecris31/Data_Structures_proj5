@@ -34,9 +34,9 @@ public class FileReader {
                 pageNum++;
             }
             if(nextExpression.length() > 2 && !dictionary.contains(nextExpression)){
-                if(!index.containsWord(nextExpression)){
+                if(index.containsWord(nextExpression)){
                     if(!index.wordContainsPage(pageNum, nextExpression)){
-                        if(index.pagelistIsFull(nextExpression)){
+                        if(!index.pagelistIsFull(nextExpression)){
                             index.addPageNum(pageNum, nextExpression);
                         }
                         else{
@@ -45,9 +45,9 @@ public class FileReader {
                         }
                     }
                 }
-            }
-            else{
-                index.makeEntry(nextExpression);
+                else{
+                    index.makeEntry(nextExpression, pageNum);
+                }
             }
         }
         System.out.println("");
@@ -55,4 +55,5 @@ public class FileReader {
         System.out.println("");
         dictionary.orderedPrint();
     }
+
 }

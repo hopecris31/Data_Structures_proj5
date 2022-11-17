@@ -1,5 +1,17 @@
 package proj5;
 
+/**
+ * Represents a Pagelist
+ * A Pagelist is a holder that stores the page numbers that are associated with a
+ * particular word.
+ *
+ * INVARIANTS:
+ * -put invariants here💀💀
+ *
+ * @author Hope Crisafi
+ * @version 151 Fall 2022
+ */
+
 public class Pagelist implements Comparable<Pagelist> {
 
     private int[] holder;
@@ -9,24 +21,31 @@ public class Pagelist implements Comparable<Pagelist> {
     private final int EMPTY = 0;
     private final int LAST_INDEX = size()-1;
 
+    /**
+     * Default Constructor
+     */
     public Pagelist(){
         this.holder = new int[DEFAULT_CAPACITY];
         this.size = EMPTY;
         this.word = "";
     }
 
+    /**
+     * non-default constructor, takes word to associate
+     * with page numbers
+     * @param word a word
+     */
     public Pagelist(String word){
         this.holder = new int[DEFAULT_CAPACITY];
         this.size = EMPTY;
         this.word = word;
     }
 
-    public Pagelist(int capacity){
-        this.holder = new int[capacity];
-        this.size = EMPTY;
-    }
 
-
+    /**
+     * Adds a page number to the page number holder
+     * @param toAdd page number
+     */
     public void add(int toAdd){
         if(!this.contains(toAdd) && !this.capacityReached()){
             this.holder[size()] = toAdd;
@@ -34,6 +53,10 @@ public class Pagelist implements Comparable<Pagelist> {
         }
     }
 
+    /**
+     * removes a page number from the page number holder
+     * @param toRemove page number
+     */
     public void remove(int toRemove){
         for(int i=0; i<this.size(); i++){
             if(this.holder[i] == toRemove){
@@ -43,14 +66,19 @@ public class Pagelist implements Comparable<Pagelist> {
         }
     }
 
+    /**
+     * checks to see if the page number holder is full
+     * @return true if full, false if there is remaining capacity
+     */
     public boolean capacityReached(){
         return this.size() == this.holder.length;
     }
 
-    public int getCapacity(){
-        return this.holder.length;
-    }
-
+    /**
+     * determines if a page number is already in the page number holder
+     * @param toFind page number to find
+     * @return true if in the page number list, false if not
+     */
     public boolean contains(int toFind){
             for(int i=0; i<this.size(); i++){
                 if(this.holder[i] == toFind){
@@ -60,27 +88,24 @@ public class Pagelist implements Comparable<Pagelist> {
         return false;
     }
 
-    //add method that returns word instance variable
-
-
-
+    /**
+     * @return the number of pages in the page number holder
+     */
     public int size(){
         return this.size;
     }
 
-    public void ensureOrder(){
-        return;
-    }
 
+    /**
+     * @return the word belonging to the Pagelist
+     */
     public String word(){
         return this.word;
     }
 
-    public boolean equalsWord(String word){
-        return this.word.equals(word);
-    }
-
-
+    /**
+     * @return the String representation of the Pagelist
+     */
     public String toString(){
         String toReturn = word + " {";
         for(int i=0; i<this.size(); i++){
@@ -92,27 +117,28 @@ public class Pagelist implements Comparable<Pagelist> {
         return toReturn + "}";
     }
 
+    /**
+     * compares the value of the Pagelist objects, determined
+     * by which word has greater ASCII value
+     * @param other the object to be compared.
+     * @return 1 if this is greater, 0 if equal, -1 of other is greater
+     */
     @Override
     public int compareTo(Pagelist other) {
         return this.word().compareTo(other.word());
     }
 
     /** ------------------------------
-     *      PRIVATE HELPER METHODS
+     *      PRIVATE HELPER METHODs
      * _______________________________
      */
 
-    private boolean isEmpty(){
-        return this.size() == EMPTY;
-    }
 
-
-
-    private Object getLastItem() {
-        return this.holder[LAST_INDEX];
-    }
-
-
+    /**
+     * removes the current element from the holder and shifts all elements
+     * to the left
+     * @param index page number to be removed
+     */
     private void removeAndShift(int index){
         for(int i=index; i<this.size(); i++){
             if(i == this.size()-1){

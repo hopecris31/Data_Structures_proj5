@@ -22,7 +22,7 @@ public class Dictionary {
     }
 
     public boolean contains(String word){
-        return this.holder.contains(word);
+        return this.holder.search(word);
     }
 
     public int size(){

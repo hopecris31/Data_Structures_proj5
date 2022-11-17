@@ -13,7 +13,6 @@ public class Client
     {
         String file = "input.txt";
     	makeIndex(file);
-        //makeDictionary(file);
     }
     
     /**
@@ -25,4 +24,6 @@ public class Client
     	FileReader fileReader = new FileReader(fileName);
         fileReader.run();
     }
+
+
 }

@@ -1,10 +1,13 @@
 package proj5;
 
 /**
+ * Represents a Binary Search Tree
+ *
+ * INVARIANTS:
+ * -put invariants here💀💀
  * 
- * 
- * @author Chris Fernandes, Kristina Striegnitz
- * @version Fall 2022
+ * @author Hope Crisafi
+ * @version 151 Fall 2022
  */
 public class BinarySearchTree<T extends Comparable<T>> {
 
@@ -25,29 +28,109 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		root = insert(root,newValue);
 	}
 
+	/**
+	 * returns a pointer to the object stored in the BSTNode
+	 * @param toFind object within tree to find
+	 * @return pointer to that object
+	 */
 	public T getData(T toFind){
 		return getData(root, toFind);
 	}
 
-	//returns a pointer to the node of that value
-	private T getData(BSTNode<T> subroot, T toFind){
-		if(!this.contains(toFind)){
+	
+	/**
+	 * deletes value from tree.  If value not there, do nothing.
+	 * @param value  value to delete
+	 */
+	public void delete(T value) {
+		delete(this.root, value);
+	}
+
+
+	/**
+	 * finds the max value in the tree
+	 * @return max value
+	 */
+	public T findMax (){
+		try {
+			return findSubtreeMax(this.root).key;
+		}
+		catch (Exception emptyTree) {
 			return null;
-		}
-		else if (subroot.key.compareTo(toFind) > 0){
-			return getData(subroot.llink, toFind);
-		}
-		else if(subroot.key.compareTo(toFind) < 0){
-			return getData(subroot.rlink, toFind);
-		}
-		else{
-			return subroot.key;
 		}
 	}
 
 	/**
+	 * finds the smallest value in the tree
+	 * @return smallest value
+	 */
+	public T findMin (){
+		try {
+			return findSubtreeMin(this.root).key;
+		}
+		catch (Exception emptyTree) {
+			return null;
+		}
+	}
+
+
+    /**
+     * checks whether the target value is in the tree
+     * @return true or false to indicate whether the target value is in the tree
+     */
+    public boolean search(T target) {
+		return search(this.root, target) != null;
+    }
+
+
+	/**
+	 * Makes a linked list out of the values from a given tree
+	 * @return a linked list of tree values
+	 */
+	public LinkedList<T> makeLL(){
+		return makeLL(this.root, new LinkedList<T>());
+	}
+
+	/**
+	 * @return the number of items in the tree
+	 */
+	public int size(){
+		return size(this.root);
+	}
+	private int size(BSTNode<T> subroot){
+		if(subroot == null){
+			return 0;
+		}
+		else{
+			return 1 + size(subroot.llink) + size(subroot.rlink);
+		}
+	}
+
+	/**
+	 * prints the values in the tree in order from greatest to least value
+	 */
+	public void orderedPrint(){
+		orderedPrint(root);
+	}
+
+
+	/**
+	 * returns tree as printable string
+	 * @return tree in string format with form (left subtree) value (right subtree)
+	 */
+	public String toString(){
+		return toString(root);
+	}
+
+
+	/** ------------------------------
+	 *      PRIVATE HELPER METHODS
+	 * _______________________________
+	 */
+
+	/**
 	 * inserts value into tree rooted at subroot
-	 * 
+	 *
 	 * @param subroot  subroot of tree to insert into
 	 * @param value  the value to insert
 	 * @return   root of the subtree I've just finished inserting into
@@ -65,15 +148,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 			return subroot;
 		}
 	}
-	
-	/**
-	 * deletes value from tree.  If value not there, do nothing.
-	 * @param value  value to delete
-	 */
-	public void delete(T value) {
-		delete(this.root, value);
-	}
-	
+
 	/**
 	 * deletes value from tree rooted at subroot
 	 * @param subroot  root of tree to be deleted from
@@ -81,27 +156,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	 * @return pointer to tree rooted at subroot that has value removed from it
 	 */
 	private BSTNode<T> delete(BSTNode<T> subroot, T value) {
-		/**
-		 * if subroot is an empty tree
-		 *     return null
-		 * else if victim is on the left of subroot
-		 *     subroot's left link must become what recursion on subroot's left child gives you
-		 * else if victim is on the right of subroot
-		 *     subroot's right link must become what recursion on subroot's rlink gives you
-		 * else
-		 *     victim is found!
-		 *     case 1) victim is a leaf
-		 *         return null
-		 *     case 2) victim has exactly one (right) subtree
-		 *         return pointer to that right subtree
-		 *     (case 2a - take care of just left subtree only)
-		 *     case 3) victim has two subtrees
-		 *         pick a replacement (largest value in the left subtree)
-		 *         move the data from replacement node to victim node
-		 *         delete the replacement
-		 */
 
-		//BSTNode<T> subroot1 = search(subroot, value); //locate the node
 		if(subroot == null || value == null){
 			return null;
 		}
@@ -127,9 +182,15 @@ public class BinarySearchTree<T extends Comparable<T>> {
 				subroot.key = greatestValue;
 			}
 		}
-		return subroot; //why do we want to return subroot at the end
+		return subroot;
 	}
 
+
+	/**
+	 * searches the tree recursively for the highest value node in the subtree
+	 * @param subroot root of tree to be searched
+	 * @return pointer to node that contains a greater value
+	 */
 	private BSTNode<T> findSubtreeMax(BSTNode<T> subroot){
 		if(subroot == null){
 			return null;
@@ -142,24 +203,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		}
 	}
 
-	public T findMax (){
-		try {
-			return findSubtreeMax(this.root).key;
-		}
-		catch (Exception emptyTree) {
-			return null;
-		}
-	}
-
-	public T findMin (){
-		try {
-			return findSubtreeMin(this.root).key;
-		}
-		catch (Exception emptyTree) {
-			return null;
-		}
-	}
-
+	/**
+	 * searches the tree recursively for the lowest value node in the subtree
+	 * @param subroot root of tree to be searched
+	 * @return pointer to node that contains a lower value
+	 */
 	private BSTNode<T> findSubtreeMin(BSTNode<T> subroot){
 		if(subroot == null){
 			return null;
@@ -172,43 +220,54 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		}
 	}
 
-    /**
-     * checks whether the target value is in the tree
-     * @return true or false to indicate whether the target value is in the tree
-     */
-    public boolean contains(T target) {
-		return contains(this.root, target) != null;
-    }
 
-
-	private BSTNode<T>  search(BSTNode<T> subroot, T toFind){
-		if(subroot == null){
-			return null;
-		}
-		return null;
-	}
-
-
-	private BSTNode<T> contains(BSTNode<T> subroot, T target){
+	/**
+	 * searches the tree recursively for the target node
+	 * @param subroot root of tree to be searched
+	 * @return pointer to node that is/leads to target
+	 */
+	private BSTNode<T> search(BSTNode<T> subroot, T target){
 		if(subroot == null){
 			return null;
 		}
 		else if (target.compareTo(subroot.key) > 0){
-			return contains(subroot.rlink, target);
+			return search(subroot.rlink, target);
 		}
 		else if (target.compareTo(subroot.key) < 0){
-			return contains(subroot.llink, target);
+			return search(subroot.llink, target);
 		}
 		else{
 			return subroot;
 		}
 	}
 
-
-	public LinkedList<T> makeLL(){
-		return makeLL(this.root, new LinkedList<T>());
+	/**
+	 * recursively searches the tree for the node of which to retrieve data
+	 * @param subroot root of tree to search
+	 * @param toFind data to be found
+	 * @return pointer to next node?
+	 */
+	private T getData(BSTNode<T> subroot, T toFind){
+		if(subroot == null){
+			return null;
+		}
+		else if (subroot.key.compareTo(toFind) > 0){
+			return getData(subroot.llink, toFind);
+		}
+		else if(subroot.key.compareTo(toFind) < 0){
+			return getData(subroot.rlink, toFind);
+		}
+		else{
+			return subroot.key;
+		}
 	}
 
+	/**
+	 * recursively traverses the tree and adds all nodes to a linkedList
+	 * @param subroot subroot of tree from which list is to be made
+	 * @param ll linkedList of which values will be added to
+	 * @return linkedList
+	 */
 	private LinkedList<T> makeLL(BSTNode<T> subroot, LinkedList<T> ll){
 		if(subroot == null){
 			return ll;
@@ -225,37 +284,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		return ll;
 	}
 
-	public int size(){
-		return size(this.root);
-	}
-	private int size(BSTNode<T> subroot){
-		if(subroot == null){
-			return 0;
-		}
-		else{
-			return 1 + size(subroot.llink) + size(subroot.rlink);
-		}
-	}
-
-	public void orderedPrint(){
-		orderedPrint(root);
-	}
-
-	private void orderedPrint(BSTNode<T> subroot){
-		if(subroot != null){
-			orderedPrint(subroot.llink);
-			System.out.println(subroot.key +  "");
-			orderedPrint(subroot.rlink);
-		}
-	}
-
-	/**
-	 * returns tree as printable string
-	 * @return tree in string format with form (left subtree) value (right subtree)
-	 */
-	public String toString(){
-		return toString(root);
-	}
 
 	/**
 	 * recursive helper method for toString()
@@ -275,5 +303,16 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		return ret;
 	}
 
+	/**
+	 * recursively traverses the tree and prints the values in the nodes
+	 * @param subroot root of tree to be traversed
+	 */
+	private void orderedPrint(BSTNode<T> subroot){
+		if(subroot != null){
+			orderedPrint(subroot.llink);
+			System.out.println(subroot.key +  "");
+			orderedPrint(subroot.rlink);
+		}
+	}
 
 }

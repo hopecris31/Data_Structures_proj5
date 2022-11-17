@@ -268,7 +268,7 @@ public class BinarySearchTreeTest {
         bst.insert("E");
         bst.insert("G");
 
-        assertTrue(bst.contains("C"));
+        assertTrue(bst.search("C"));
     }
 
     @Test //Tests search; searches for a value that is not in the tree
@@ -281,13 +281,13 @@ public class BinarySearchTreeTest {
         bst.insert("E");
         bst.insert("G");
 
-        assertFalse(bst.contains("X"));
+        assertFalse(bst.search("X"));
     }
 
     @Test //Tests search; tries to search an empty tree
     public void testSearchEmptyTree(){
 
-        assertFalse(bst.contains("X"));
+        assertFalse(bst.search("X"));
     }
 
     @Test //Tests search; searches for the greatest value
@@ -300,7 +300,7 @@ public class BinarySearchTreeTest {
         bst.insert("E");
         bst.insert("G");
 
-        assertTrue(bst.contains("F"));
+        assertTrue(bst.search("F"));
     }
 
     @Test //Tests search; searches for the lowest value
@@ -313,7 +313,7 @@ public class BinarySearchTreeTest {
         bst.insert("E");
         bst.insert("G");
 
-        assertTrue(bst.contains("A"));
+        assertTrue(bst.search("A"));
     }
 
     @Test //Tests search; searches for the lowercase of an uppercase letter (should return false, case-sensitive)
@@ -326,7 +326,7 @@ public class BinarySearchTreeTest {
         bst.insert("E");
         bst.insert("G");
 
-        assertFalse(bst.contains("a"));
+        assertFalse(bst.search("a"));
     }
 
     @Test //Tests findMax; finds the highest value in the tree

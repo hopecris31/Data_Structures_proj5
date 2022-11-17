@@ -28,29 +28,29 @@ public class IndexTest {
 
     @Test
     public void makeEntry(){
-        index.makeEntry("hello");
+        index.makeEntry("hello", 1);
 
         assertEquals("(  hello {}  )", index.toString());
     }
 
     @Test
     public void testInsertDuplicate(){
-        index.makeEntry("hello");
-        index.makeEntry("world");
+        index.makeEntry("hello", 1);
+        index.makeEntry("world", 1);
 
-        index.makeEntry("hello");
+        index.makeEntry("hello", 1);
 
         assertEquals("(  hello {}  (  world {}  ))", index.toString());
     }
 
     @Test
     public void testInsertFullPagelist(){
-        index.makeEntry("hello");
-        index.makeEntry("world");
-        index.makeEntry("Hello");
-        index.makeEntry("World");
+        index.makeEntry("hello", 1);
+        index.makeEntry("world", 1);
+        index.makeEntry("Hello", 1);
+        index.makeEntry("World", 1);
 
-        index.makeEntry("hello");
+        index.makeEntry("hello", 1);
         System.out.println(index);
 
         assertEquals(4, index.size());
@@ -58,10 +58,10 @@ public class IndexTest {
 
     @Test
     public void testRemove(){
-        index.makeEntry("hello");
-        index.makeEntry("world");
-        index.makeEntry("Hello");
-        index.makeEntry("World");
+        index.makeEntry("hello", 1);
+        index.makeEntry("world", 1);
+        index.makeEntry("Hello", 1);
+        index.makeEntry("World", 1);
 
         index.delete("hello");
         System.out.println(index);
@@ -71,10 +71,10 @@ public class IndexTest {
 
     @Test
     public void testRemoveEmpty(){
-        index.makeEntry("hello");
-        index.makeEntry("world");
-        index.makeEntry("Hello");
-        index.makeEntry("World");
+        index.makeEntry("hello", 1);
+        index.makeEntry("world", 1);
+        index.makeEntry("Hello", 1);
+        index.makeEntry("World", 1);
 
         index.delete("hello");
         System.out.println(index);
@@ -84,8 +84,8 @@ public class IndexTest {
 
     @Test
     public void testaddPageNum(){
-        index.makeEntry("hello");
-        index.makeEntry("world");
+        index.makeEntry("hello", 1);
+        index.makeEntry("world", 1);
 
         index.addPageNum(3, "hello");
         index.addPageNum(3, "hello");
@@ -102,8 +102,8 @@ public class IndexTest {
 
     @Test
     public void testWordContainsPage(){
-        index.makeEntry("hello");
-        index.makeEntry("world");
+        index.makeEntry("hello", 1);
+        index.makeEntry("world", 1);
 
         index.addPageNum(3, "hello");
         index.addPageNum(3, "hello");
