@@ -29,8 +29,12 @@ public class Dictionary {
         return this.size;
     }
 
+    private String[] makeWordList(){
+        return null;
+    }
+
     public String toString(){
-        return this.holder.toString();
+        return this.holder.makeLL().toString();
     }
 
 }

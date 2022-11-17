@@ -28,9 +28,6 @@ public class Pagelist implements Comparable<Pagelist> {
 
 
     public void add(int toAdd){
-//        if(this.capacityReached()){
-//            addToDict(this.word);
-//        }
         if(!this.contains(toAdd) && !this.capacityReached()){
             this.holder[size()] = toAdd;
             this.size++;

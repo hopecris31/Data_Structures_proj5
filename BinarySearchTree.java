@@ -204,20 +204,21 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		}
 	}
 
-	public LinkedList<T> makeArray(){
-		return makeArray(this.root, new LinkedList<T>());
+
+	public LinkedList<T> makeLL(){
+		return makeLL(this.root, new LinkedList<T>());
 	}
 
-	private LinkedList<T> makeArray(BSTNode<T> subroot, LinkedList<T> ll){
+	private LinkedList<T> makeLL(BSTNode<T> subroot, LinkedList<T> ll){
 		if(subroot == null){
 			return ll;
 		}
 		else{
 			if(subroot.llink != null){
-				makeArray(subroot.llink, ll);
+				makeLL(subroot.llink, ll);
 			}
 			if(subroot.rlink != null){
-				makeArray(subroot.rlink, ll);
+				makeLL(subroot.rlink, ll);
 			}
 			ll.insertAtEnd(subroot.key);
 		}

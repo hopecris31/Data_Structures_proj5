@@ -49,7 +49,7 @@ public class Index{
 
 
     public String toString(){
-        return this.holder.toString();
+        return this.holder.makeLL().toString();
         //get alphabetical order and print
     }
 

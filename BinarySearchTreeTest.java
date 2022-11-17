@@ -405,7 +405,7 @@ public class BinarySearchTreeTest {
         bst.insert("E");
         bst.insert("G");
 
-        System.out.println(bst.makeArray());
+        System.out.println(bst.makeLL());
     }
 
 }

@@ -10,7 +10,7 @@ package proj5;
  *      - if length is equal to 0, the first node points to null
  *  - list node next refers to the next node in the list
  */
-public class LinkedList<T> {
+public class LinkedList<T extends Comparable<T>>{
     private int length;
     private ListNode firstNode;
 
@@ -45,7 +45,7 @@ public class LinkedList<T> {
      * @param data string to insert
      */
     public void insertAtHead(T data) {
-        ListNode newNode = new ListNode(data);
+        ListNode newNode = new ListNode((Comparable) data);
         if (this.isEmpty()){
             firstNode = newNode;
         }
@@ -64,7 +64,7 @@ public class LinkedList<T> {
     public void insertAtEnd(T data){
         if(!this.isEmpty()){
             ListNode last = this.getLastItem();
-            ListNode newNode = new ListNode(data);
+            ListNode newNode = new ListNode((Comparable) data);
             last.next = newNode;
             this.length++;
         }
@@ -163,6 +163,29 @@ public class LinkedList<T> {
         this.length = EMPTY;
         this.firstNode = null;
     }
+
+//    public void bubbleSort(){
+//        ListNode<T> runner = this.firstNode;
+//        ListNode nextNode = null;
+//
+//        T temp;
+//
+//        if(this.firstNode == null){
+//            return;
+//        }
+//        else{
+//            while(runner != null){
+//                nextNode = runner.next;
+//
+//                while(nextNode != null){
+//                    if(runner.getData().compareTo(nextNode.getData())){
+//
+//                    }
+//                }
+//            }
+//        }
+
+    //}
 
 
     /**
@@ -337,16 +360,18 @@ public class LinkedList<T> {
      * @return a String representation of the LinkedList
      */
     public String toString(){
-        String toReturn = "(";
+        String toReturn = "";
         ListNode runner = firstNode;
+        int counter = 1;
         while(runner != null){
-            toReturn = toReturn + runner;
+            toReturn = toReturn + counter + ") " + runner;
             runner = runner.getNext();
             if(runner != null){
-                toReturn = toReturn + ", ";
+                toReturn = toReturn + "\n";
+                counter++;
             }
         }
-        toReturn = toReturn + ")";
+        toReturn = toReturn + "";
         return toReturn;
     }
 

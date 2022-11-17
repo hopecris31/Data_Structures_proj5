@@ -9,7 +9,7 @@ package proj5;
  *INVARINAT:
  * -each node contains data and a reference to the next node in a list
  */
-public class ListNode<T> {
+public class ListNode<T  extends Comparable<T>> {
     public T data;
     public ListNode next;
 
@@ -35,4 +35,9 @@ public class ListNode<T> {
     public ListNode getNext() {
         return this.next;
     }
+
+    public int compareTo(ListNode other){
+        return 0;
+    }
+
 }

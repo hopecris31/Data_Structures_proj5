@@ -33,6 +33,8 @@ public class DictionaryTest {
         dict.insert("dog");
 
         System.out.println(dict);
+
+        assertEquals("(dog, world, hello)", dict.toString());
     }
 
 
