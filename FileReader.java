@@ -50,7 +50,9 @@ public class FileReader {
                 index.makeEntry(nextExpression);
             }
         }
-        System.out.println(index.toString());
-        System.out.println(dictionary.toString());
+        System.out.println("");
+        index.orderedPrint();
+        System.out.println("");
+        dictionary.orderedPrint();
     }
 }

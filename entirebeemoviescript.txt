@@ -1,7 +1,7 @@
 According to all known laws
 of aviation,
 
-
+#
 there is no way a bee
 should be able to fly.
 
@@ -165,7 +165,7 @@ graduating class of...
 
 
 That concludes our ceremonies.
-
+#
 
 And begins your career
 at Honex Industries!
@@ -324,7 +324,7 @@ to make one decision in life.
 
 But, Adam, how could they
 never have told us that?
-
+#
 
 Why would you question anything?
 We're bees.
@@ -436,7 +436,7 @@ and with the other, he was slapping me!
 - Oh, my!
 - I never thought I'd knock him out.
 
-
+#
 What were you doing during this?
 
 
@@ -586,7 +586,7 @@ Step to the side.
 
 - What'd you get?
 - Picking crud out. Stellar!
-
+#
 
 Wow!
 
@@ -681,7 +681,7 @@ You're gonna die! You're crazy! Hello?
 
 Another call coming in.
 
-
+#
 If anyone's feeling brave,
 there's a Korean deli on 83rd
 
@@ -829,7 +829,7 @@ It's got a bit of a kick.
 
 That is one nectar collector!
 
-
+#
 - Ever see pollination up close?
 - No, sir.
 
@@ -950,7 +950,7 @@ Gross.
 
 
 There's a bee in the car!
-
+#
 
 - Do something!
 - I'm driving!
@@ -1034,7 +1034,7 @@ What's number one? Star Wars?
 
 
 Nah, I don't go for that...
-
+#
 
 ...kind of stuff.
 
@@ -1125,7 +1125,7 @@ Right. Bye, Vanessa. Thanks.
 
 - Supposed to be less calories.
 - Bye.
-
+#
 
 I gotta say something.
 
@@ -1235,7 +1235,7 @@ I'll leave now.
 - Wait! How did you learn to do that?
 - What?
 
-
+#
 The talking thing.
 
 
@@ -1365,7 +1365,7 @@ a doctor, but I wanted to be a florist.
 Our new queen was just elected
 with that same campaign slogan.
 
-
+#
 Anyway, if you look...
 
 
@@ -1480,7 +1480,7 @@ They drive crazy.
 
 - How'd you get back?
 - Poodle.
-
+#
 
 You did it, and I'm glad. You saw
 whatever you wanted to see.
@@ -1613,7 +1613,7 @@ You know what your problem is, Barry?
 
 
 I gotta start thinking bee?
-
+#
 
 How much longer will this go on?
 
@@ -1779,7 +1779,7 @@ What was that? A Pic 'N' Save circular?
 
 
 Yeah, it was. How did you know?
-
+#
 
 It felt like about 10 pages.
 Seventy-five is pretty much our limit.
@@ -1997,7 +1997,7 @@ But don't kill no more bugs!
 - You hear something?
 - Like what?
 
-
+#
 Like tiny screaming.
 
 
@@ -2144,7 +2144,7 @@ Oh, no!
 
 There's hundreds of them!
 
-
+#
 Bee honey.
 
 
@@ -2356,7 +2356,7 @@ at the point of weakness!
 
 
 It was my grandmother, Ken. She's 81.
-
+#
 
 Honey, her backhand's a joke!
 I'm not gonna take advantage of that?
@@ -2574,7 +2574,7 @@ Talking bee!
 
 How do we know this isn't some sort of
 
-
+#
 holographic motion-picture-capture
 Hollywood wizardry?
 
@@ -2868,7 +2868,7 @@ the rightjob. We have that in common.
 
 
 Do we?
-
+#
 
 Bees have 100 percent employment,
 but we do jobs like taking the crud out.
@@ -3093,7 +3093,7 @@ to all the bee children?
 - Yeah, but...
 - So those aren't your real parents!
 
-
+#
 - Oh, Barry...
 - Yes, they are!
 
@@ -3312,7 +3312,7 @@ these absurd shenanigans to go on?
 
 They have presented no compelling
 evidence to support their charges
-
+#
 
 against my clients,
 who run legitimate businesses.
@@ -3567,7 +3567,7 @@ Laying out, sleeping in.
 I heard your Uncle Oarl was on his way
 to San Antonio with a cricket.
 
-
+#
 At least we got our honey back.
 
 
@@ -3810,7 +3810,7 @@ back here with what we've got.
 Tournament of Roses,
 Pasadena, Oalifornia.
 
-
+#
 They've got nothing
 but flowers, floats and cotton candy.
 
@@ -3908,7 +3908,7 @@ Enjoy your flight.
 Then if we're lucky, we'll have
 just enough pollen to do the job.
 
-
+#
 Oan you believe how lucky we are? We
 have just enough pollen to do the job!
 
@@ -4151,7 +4151,7 @@ We're not made of Jell-O.
 
 We get behind a fellow.
 
-
+#
 - Black and yellow!
 - Hello!
 
@@ -4417,7 +4417,7 @@ this is our moment! What do you say?
 
 Are we going to be bees, orjust
 Museum of Natural History keychains?
-
+#
 
 We're bees!
 

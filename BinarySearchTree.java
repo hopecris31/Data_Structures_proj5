@@ -237,6 +237,18 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		}
 	}
 
+	public void orderedPrint(){
+		orderedPrint(root);
+	}
+
+	private void orderedPrint(BSTNode<T> subroot){
+		if(subroot != null){
+			orderedPrint(subroot.llink);
+			System.out.println(subroot.key +  "");
+			orderedPrint(subroot.rlink);
+		}
+	}
+
 	/**
 	 * returns tree as printable string
 	 * @return tree in string format with form (left subtree) value (right subtree)

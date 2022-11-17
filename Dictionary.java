@@ -33,6 +33,12 @@ public class Dictionary {
         return null;
     }
 
+    public void orderedPrint(){
+        System.out.println("DICTIONARY");
+        System.out.println("----------");
+        this.holder.orderedPrint();
+    }
+
     public String toString(){
         System.out.println("DICTIONARY");
         System.out.println("----------");

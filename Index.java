@@ -64,6 +64,11 @@ public class Index{
         return this.holder.size();
     }
 
+    public void orderedPrint(){
+        System.out.println("INDEX");
+        System.out.println("-----");
+        this.holder.orderedPrint();
+    }
 
 
     public String toString(){
