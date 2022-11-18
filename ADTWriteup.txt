@@ -1,1 +1,12 @@
-y
+For my Pagelist holder, I initially considered using a linked list or a stack.
+I thought a linked list might be a good idea because adding and removing could
+be done in constant time. However, this benefit would not be needed, as I would not
+need to remove elements from the Pagelist.  A stack was unnecessary because it is a
+complex solution for a very simple problem; I would not need to pop and return the most
+recently added element.  So, I decided to go with an array.  While linked list may have
+quick add and remove times, it takes linear time to search for an element.  Array search time
+is linear as well, so linked list provided no additional benefit here.  I figured that
+I could just add to an array in constant time if I just always added to the index size-1.
+With all of these benefits and runtimes considered, the array was the best structure for the job
+because it is simple and has few strings attached.  It is a built-in data type and iterating
+through it is simple, as well as implementation.

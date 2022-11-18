@@ -146,4 +146,11 @@ public class PagelistTest {
         assertFalse(pl.contains(9));
     }
 
+    @Test //Tests contains; pagelist is empty
+    public void testCompareTo(){
+        Pagelist pl2 = new Pagelist("further");
+        Pagelist pl3 = new Pagelist("try");
+        System.out.println(pl2.compareTo(pl3));
+    }
+
 }

@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.Timeout;
+import java.io.*;
 
 import static org.junit.Assert.*;
 
@@ -13,11 +14,14 @@ public class BinarySearchTreeTest {
     @Rule
     public Timeout timeout = Timeout.millis(100);
 
+    private final PrintStream output = System.out;
+    private final ByteArrayOutputStream outputByte = new ByteArrayOutputStream();
     private BinarySearchTree<String> bst;
 
     @Before
     public void setup() throws Exception {
         bst = new BinarySearchTree<String>();
+        System.setOut(new PrintStream(outputByte));
     }
 
     @After
@@ -316,6 +320,19 @@ public class BinarySearchTreeTest {
         assertTrue(bst.search("A"));
     }
 
+    @Test //Tests search; searches for the lowest value
+    public void testFindMaxFunc(){
+        bst.insert("D");
+        bst.insert("B");
+        bst.insert("F");
+        bst.insert("A");
+        bst.insert("C");
+        bst.insert("E");
+        bst.insert("G");
+
+        assertEquals("G", bst.findMax());
+    }
+
     @Test //Tests search; searches for the lowercase of an uppercase letter (should return false, case-sensitive)
     public void testSearchLowercase(){
         bst.insert("D");
@@ -395,8 +412,21 @@ public class BinarySearchTreeTest {
         assertEquals(7, bst.size());
     }
 
-    @Test //Tests search; searches for a value that is in the tree
-    public void testMakeLL(){
+//    @Test //Tests search; searches for a value that is in the tree
+//    public void testMakeLL(){
+//        bst.insert("D");
+//        bst.insert("B");
+//        bst.insert("F");
+//        bst.insert("A");
+//        bst.insert("C");
+//        bst.insert("E");
+//        bst.insert("G");
+//
+//        System.out.println(bst.makeLL());
+//    }
+
+    @Test
+    public void testPrintInOrder(){
         bst.insert("D");
         bst.insert("B");
         bst.insert("F");
@@ -405,7 +435,9 @@ public class BinarySearchTreeTest {
         bst.insert("E");
         bst.insert("G");
 
-        System.out.println(bst.makeLL());
+        bst.orderedPrint();
+        assertEquals("A" + "\n" + "B" + "\n" + "C" + "\n" + "D" + "\n" + "E" + "\n" + "F" + "\n" + "G",
+                outputByte.toString().trim());
     }
 
 }

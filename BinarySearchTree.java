@@ -4,7 +4,8 @@ package proj5;
  * Represents a Binary Search Tree
  *
  * INVARIANTS:
- * -put invariants here💀💀
+ * -For a given node, every node in the left subtree of it is of less than
+ * 	or equal value, and in the right subtree, all values are greater
  * 
  * @author Hope Crisafi
  * @version 151 Fall 2022
@@ -25,7 +26,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	 * @param newValue value to insert
 	 */
 	public void insert(T newValue) {
-		root = insert(root,newValue);
+		root = insert(root, newValue);
 	}
 
 	/**
@@ -43,7 +44,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	 * @param value  value to delete
 	 */
 	public void delete(T value) {
-		delete(this.root, value);
+		this.root = delete(this.root, value);
 	}
 
 
@@ -52,12 +53,10 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	 * @return max value
 	 */
 	public T findMax (){
-		try {
+		if(this.size() != 0){
 			return findSubtreeMax(this.root).key;
 		}
-		catch (Exception emptyTree) {
-			return null;
-		}
+		return null;
 	}
 
 	/**
@@ -79,7 +78,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
      * @return true or false to indicate whether the target value is in the tree
      */
     public boolean search(T target) {
-		return search(this.root, target) != null;
+		return search(this.root, target);
     }
 
 
@@ -110,7 +109,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	 * prints the values in the tree in order from greatest to least value
 	 */
 	public void orderedPrint(){
-		orderedPrint(root);
+		orderedPrint(this.root);
 	}
 
 
@@ -157,13 +156,13 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	 */
 	private BSTNode<T> delete(BSTNode<T> subroot, T value) {
 
-		if(subroot == null || value == null){
+		if(subroot == null){
 			return null;
 		}
-		else if (value.compareTo(subroot.key) > 0){ //if value is greater than subroot
+		else if (value.compareTo(subroot.key) > 0){
 			subroot.rlink = delete(subroot.rlink, value);
 		}
-		else if (value.compareTo(subroot.key) < 0){ // make a const for 0/make this more readable?
+		else if (value.compareTo(subroot.key) < 0){
 			subroot.llink = delete(subroot.llink, value);
 		}
 		else{
@@ -178,8 +177,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
 			}
 			else{
 				T greatestValue = findSubtreeMax(subroot).key;
-				delete(greatestValue);
 				subroot.key = greatestValue;
+				subroot.llink = delete(subroot.llink, greatestValue);
 			}
 		}
 		return subroot;
@@ -226,9 +225,9 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	 * @param subroot root of tree to be searched
 	 * @return pointer to node that is/leads to target
 	 */
-	private BSTNode<T> search(BSTNode<T> subroot, T target){
+	private boolean search(BSTNode<T> subroot, T target){
 		if(subroot == null){
-			return null;
+			return false;
 		}
 		else if (target.compareTo(subroot.key) > 0){
 			return search(subroot.rlink, target);
@@ -237,7 +236,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 			return search(subroot.llink, target);
 		}
 		else{
-			return subroot;
+			return true;
 		}
 	}
 
@@ -308,11 +307,12 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	 * @param subroot root of tree to be traversed
 	 */
 	private void orderedPrint(BSTNode<T> subroot){
-		if(subroot != null){
-			orderedPrint(subroot.llink);
-			System.out.println(subroot.key +  "");
-			orderedPrint(subroot.rlink);
+		if (subroot == null) {
+			return;
 		}
+		orderedPrint(subroot.llink);
+		System.out.println(subroot.key);
+		orderedPrint(subroot.rlink);
 	}
 
 }

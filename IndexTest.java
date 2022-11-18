@@ -11,8 +11,8 @@ import static org.junit.Assert.*;
 
 public class IndexTest {
 
-    @Rule
-    public Timeout timeout = Timeout.millis(100);
+    //@Rule
+    //public Timeout timeout = Timeout.millis(100);
 
     public Index index;
 
@@ -30,7 +30,7 @@ public class IndexTest {
     public void makeEntry(){
         index.makeEntry("hello", 1);
 
-        assertEquals("(  hello {}  )", index.toString());
+        index.orderedPrint();
     }
 
     @Test
@@ -38,9 +38,9 @@ public class IndexTest {
         index.makeEntry("hello", 1);
         index.makeEntry("world", 1);
 
-        index.makeEntry("hello", 1);
+        index.makeEntry("hello", 2);
 
-        assertEquals("(  hello {}  (  world {}  ))", index.toString());
+        index.orderedPrint();
     }
 
     @Test
@@ -64,7 +64,7 @@ public class IndexTest {
         index.makeEntry("World", 1);
 
         index.delete("hello");
-        System.out.println(index);
+        index.orderedPrint();
 
         assertEquals(3, index.size());
     }

@@ -6,7 +6,10 @@ package proj5;
  * particular word.
  *
  * INVARIANTS:
- * -put invariants here💀💀
+ * -Each Pagelist holds one word, and a list of page numbers that that word appears on
+ * -Pagelist objects are sorted/given value to based on their word's ASCII value
+ * -Duplicate page numbers cannot be kept
+ * -Only four different page numbers can be stored
  *
  * @author Hope Crisafi
  * @version 151 Fall 2022
@@ -122,6 +125,7 @@ public class Pagelist implements Comparable<Pagelist> {
      * @param other the object to be compared.
      * @return 1 if this is greater, 0 if equal, -1 of other is greater
      */
+
     @Override
     public int compareTo(Pagelist other) {
         return this.word().compareTo(other.word());
