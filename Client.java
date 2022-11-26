@@ -7,10 +7,8 @@ package proj5;
  * @author Hope Crisafi
  * @version 151 Fall 2022
  */
-public class Client
-{
-    public static void main(String[] args)
-    {
+public class Client {
+    public static void main(String[] args) {
         String file = "uscons.txt";
     	makeIndex(file);
     }

@@ -1,20 +1,22 @@
 package proj5;
-        /**
-        * Represents a Dictionary
-        *
-        * A Dictionary contains words that previously had entries in the Index.  A word is
-         * * only added to the Dictionary if the word has appeared at least five times
-         * * in the text.
-        *
-        * INVARIANTS:
-        * -Dictionary cannot contain any duplicate words
-         * -Words in the dictionary must have first appeared in the index
-         * -Words must have appeared at least five times in the text to be in dictionary
-         * -Words are printed in alphabetical order, with capital letters first
-        *
-        * @author Hope Crisafi
-        * @version 151 Fall 2022
-        */
+
+/**
+* Represents a Dictionary
+*
+* A Dictionary contains words that previously had entries in the Index.  A word is
+ * * only added to the Dictionary if the word has appeared at least five times
+ * * in the text.
+*
+* INVARIANTS:
+* -Dictionary cannot contain any duplicate words
+ * -Words in the dictionary must have first appeared in the index
+ * -Words must have appeared at least five times in the text to be in dictionary
+ * -Words are printed in alphabetical order, with capital letters first
+*
+* @author Hope Crisafi
+* @version 151 Fall 2022
+*/
+
 public class Dictionary {
 
     private BinarySearchTree<String> holder;

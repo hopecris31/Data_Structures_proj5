@@ -55,7 +55,6 @@ public class FileReader {
                     index.makeEntry(nextExpression, pageNum);
                 }
             }
-
         }
         System.out.println("");
         index.orderedPrint();
